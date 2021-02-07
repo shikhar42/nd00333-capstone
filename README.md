@@ -57,22 +57,46 @@ From the screenshots above, we can see that Voting Ensemble was the best model w
 One of the major issue with this dataset is of class imbalance. That is something that can be taken care of to improve the prediction accuracy. Also, feature selection can be used to identify only the important features so as to improve the accuracy.
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+For this technique, I decided to choose logistic regression as:
+
+* It is the most basic algorithm when it comes to classification and one should always start from basic models
+* It is easy to understand the results and simple to train
+* The execution time is very fast
+
+The hyperparameters that were used are:
+
+* The regularization parameter was chosen from 0.001 to 1 to handle overfitting in the model.
+* The total iterations was selected between 10 and 200.
 
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+![Alt text](https://github.com/shikhar42/nd00333-capstone/blob/master/runwidget_hd1.PNG?raw=true "hyperdrive")
+
+![Alt text](https://github.com/shikhar42/nd00333-capstone/blob/master/runwidget_hd2.PNG?raw=true "hyperdrive")
+
+As we can see from the screenshot above, the model with parameters of regularization as 1 and max iteration of 200 gave us the best accuracy of 84.67%. 
+
+To improve these results, we can further try different ranges of hyperparameters here. However, the best thing would be to handle the class imbalance in the dataset.
 
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+The best model from AutoML(Voting Ensemble) was deployed. An inference config was created using the score.py file and the service was deployed using the following code:
+
+![Alt text](https://github.com/shikhar42/nd00333-capstone/blob/master/deployment.PNG?raw=true "deployment")
+
+![Alt text](https://github.com/shikhar42/nd00333-capstone/blob/master/deployment_active_state.PNG?raw=true "deployment")
+
+From the screenshot above, we can also verify from the azure portal that the model was successfully deployed and is in a healthy state.
+
+After this, we tested the model endpoint by providing dummy data to see the results. Below is the screenshot of the test data used to test the endoint:
+
+![Alt text](https://github.com/shikhar42/nd00333-capstone/blob/master/deployment_test.PNG?raw=true "deployment")
+
+In the screenshot above, we can see that we are providing to cases to test the deployed model. The model returns the output as 0 and 1. This means that based on Voting Ensemble model, the first set of parameters would mean that the employee is not looking for a job change. However, the second output is 1, that means the that specific employee is looking for a job change.
+
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+https://www.youtube.com/watch?v=S_Y7oSuJHcQ
+
+
