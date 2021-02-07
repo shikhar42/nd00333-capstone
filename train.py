@@ -14,7 +14,7 @@ from azureml.core import Workspace, Datastore
 run = Run.get_context()
 ws = run.experiment.workspace
 data = ws.datasets['HR_Analytics']
-
+##clean data  module is basically going to generate dummy columns and convert the categorical variable to a numerical variable so as to be used as feature in the ML model. We are taking one column at a time and deleting the old column and joining the new one after generating dummies. We are doing this only if a column has more than 2 unique values. If it has just 2 unique value, we are using a simple if statement to make the column binary.
 def clean_data(df):
     # Clean and one hot encode data
     x = df.to_pandas_dataframe().dropna()
@@ -55,7 +55,6 @@ def clean_data(df):
     x.drop("company_size", axis=1, inplace=True)
     x.join(company_size)
 
-   
     y = x.pop("target")
 
     return x, y
@@ -73,9 +72,7 @@ def main():
     run.log("Max iterations:", np.int(args.max_iter))
     
     x, y = clean_data(data)
-  
-
-    # Splitting data into train and test sets.
+ 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33)
 
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
