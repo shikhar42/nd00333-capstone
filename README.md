@@ -53,8 +53,11 @@ The first configuration that we used here is experiment timeout time. Here we ha
 
 ![Alt text](https://github.com/shikhar42/nd00333-capstone/blob/master/runwidget_automl3.PNG?raw=true "automl")
 
+![Alt text](https://github.com/shikhar42/nd00333-capstone/blob/master/best_auto_ml.PNG?raw=true "automl")
+
+
 From the screenshots above, we can see that Voting Ensemble was the best model with an accuracy of 80.02%
-One of the major issue with this dataset is of class imbalance. That is something that can be taken care of to improve the prediction accuracy. Also, feature selection can be used to identify only the important features so as to improve the accuracy.
+One of the major issue with this dataset is of class imbalance. That is something that can be taken care of to improve the prediction accuracy. Also, from the screenshot above we can see the parameters of the best auto ml model such as max_iter, n_jobs, etc.
 
 ## Hyperparameter Tuning
 For this technique, I decided to choose logistic regression as:
