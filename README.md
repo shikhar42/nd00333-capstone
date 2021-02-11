@@ -44,7 +44,7 @@ Below is the screenshot of the configurations we used for automl.
 
 ![Alt text](https://github.com/shikhar42/nd00333-capstone/blob/master/automl_config.PNG?raw=true "config")
 
-In the configurations of Auto ML, we have selected the experiment timeout time to be 30 mins. Since we are doing a classification task, we have selected classification in the task. The primary metric that we are using is Accuracy. The number of cross validations used here is 5.
+The first configuration that we used here is experiment timeout time. Here we have used 30 mins as the maximum times as such automations do take a longer amount of time to run and can cost significantly high. Next, for the task, we have selected classification as we are predicting a categorical variable here and that comes under the category of classification. The next configuartion that we have selected here is primary metric. Since we are comparing models here based on their prediciting power, accuracy has been used here. The target variable that we have provided is 'Target' as that is the feature of this model that we are predicting. The number of cross validations are 5.
 
 ### Results
 ![Alt text](https://github.com/shikhar42/nd00333-capstone/blob/master/runwidget_automl1.PNG?raw=true "automl")
@@ -65,9 +65,8 @@ For this technique, I decided to choose logistic regression as:
 
 The hyperparameters that were used are:
 
-* The regularization parameter was chosen from 0.001 to 1 to handle overfitting in the model.
-* The total iterations was selected between 10 and 200.
-
+* The regularization parameter was chosen handle overfitting in the model. The chosen range was (0.001, 0.01, 0.1, 1). Hence, out of all of these, we will find which one works best with out specific dataset and model.
+* The total iterations was selected between (10, 25, 50, 200). 
 
 ### Results
 
@@ -94,6 +93,11 @@ After this, we tested the model endpoint by providing dummy data to see the resu
 
 In the screenshot above, we can see that we are providing to cases to test the deployed model. The model returns the output as 0 and 1. This means that based on Voting Ensemble model, the first set of parameters would mean that the employee is not looking for a job change. However, the second output is 1, that means the that specific employee is looking for a job change.
 
+## Future Work
+
+* One of the thing that we have noticed in this project is that the target variable is imbalanced. We can take actions to account for that
+* We can try different primary metrics instead of accuracy as accuracy can be biased if the dataset is imbalanced
+* Feature Selection can be performed to select only thsoe features that positively contribute to the prediction of the outcome variable
 
 ## Screen Recording
 
